@@ -3,12 +3,13 @@ package com.tearsmart.sort;
 import java.util.Arrays;
 
 /**
+ * 快速排序
  * @author 刘彦磊
  */
 public class QuickSort{
     public static void main(String[] args) {
         // 对 arr 进行拷贝，不改变参数内容
-        int[] arr = {1,2,3,9,4};
+        int[] arr = {2,3,1,9,4};
         int[] result = quickSort(arr, 0, arr.length - 1);
         System.out.println(Arrays.toString(result));
 
@@ -25,15 +26,16 @@ public class QuickSort{
 
     private static int partition(int[] arr, int left, int right) {
         // 设定基准值（pivot）
-        int pivot = left;
-        int index = pivot + 1;
+        int index = left + 1;
         for (int i = index; i <= right; i++) {
-            if (arr[i] < arr[pivot]) {
+            int a = arr[i];
+            int b = arr[left];
+            if (a < b) {
                 swap(arr, i, index);
                 index++;
             }
         }
-        swap(arr, pivot, index - 1);
+        swap(arr, left, index - 1);
         return index - 1;
     }
 
